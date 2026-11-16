@@ -1041,8 +1041,10 @@
 
       T.blue = T.blueA = T.orange = T.orangeA = 1; T.axis = 1;
       T.emOn = 1; T.em = q;
+    } else if (current === 'ch4') {
+      T.scene = 0; T.blue = T.blueA = T.orange = T.orangeA = T.arOn = T.emOn = 0;   // results replace the scene: draw nothing
     } else {
-      const q = current === 'ch4' ? 1 : p.ch3;
+      const q = p.ch3;
       setView(VIEW2, VIEW2, 1);
       T.blue = T.blueA = T.orange = T.orangeA = 1; T.axis = 1;
       T.blue = 0.12 + 0.88 * sm(0.17, 0.25, q);   // starts flat; encoding inflates the posterior
@@ -1054,7 +1056,6 @@
       T.paths = sm(0.29, 0.31, q); T.pathsR = sm(0.3, 0.6, q); T.ends = sm(0.58, 0.63, q);
       T.dec = sm(0.745, 0.775, q); T.dst = sm(0.765, 0.875, q); T.pu1 = sm(0.775, 0.855, q); T.out = sm(0.86, 0.95, q);
     }
-    if (current === 'ch4') T.scene *= 1 - sm(0.0, 0.035, p.ch4);
     if (curDiv) {
       const u = p[curDiv], ret = 1 - sm(0.0, 0.26, u);
       if (curDiv === 'dem') { T.pt *= ret; T.cone *= ret; T.dots *= ret; T.arrow *= ret; T.tube *= ret; T.ref *= ret; T.coneG *= 1 - sm(0.0, 0.22, u); }
